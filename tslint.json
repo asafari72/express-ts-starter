@@ -15,7 +15,9 @@
     "max-classes-per-file": true,
     "no-parameter-reassignment": false,
     "jsdoc-format": false,
-    "semicolon": [true, "always", "ignore-bound-class-methods"]
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "variable-name":false,
+    "trailing-comma":false
   },
   "rulesDirectory": []
 }

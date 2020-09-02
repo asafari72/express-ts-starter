@@ -2,19 +2,35 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Example",
-      "type": "node",
+      "name": "Launch via NPM",
       "request": "launch",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only"],
-
-      "args": ["src/server.ts", "--example", "hello"],
+      "runtimeArgs": [
+        "run-script",
+        "dev"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node",
       "env": {
         "NODE_ENV": "development"
       },
-      "cwd": "${workspaceRoot}",
-      "internalConsoleOptions": "openOnSessionStart",
-      "skipFiles": ["<node_internals>/**", "node_modules/**"]
-    }
+    },
+    // {
+    //   "name": "Example",
+    //   "type": "node",
+    //   "request": "launch",
+    //   "runtimeExecutable": "node",
+    //   "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only"],
+
+    //   "args": ["src/server.ts", "--example", "hello"],
+    //   "env": {
+    //     "NODE_ENV": "development"
+    //   },
+    //   "cwd": "${workspaceRoot}",
+    //   "internalConsoleOptions": "openOnSessionStart",
+    //   "skipFiles": ["<node_internals>/**", "node_modules/**"]
+    // }
   ]
 }
