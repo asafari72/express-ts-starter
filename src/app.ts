@@ -5,6 +5,8 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import logger from 'morgan';
 import Routes from './interfaces/routes.interface';
+import {Connection} from 'tedious';
+import {dbConfig} from './global/db.config';
 // import errorMiddleware from './middlewares/error.middleware';
 
 class App {
@@ -19,6 +21,7 @@ class App {
 
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
+    this.connectToDataBase();
     // this.initializeErrorHandling();
   }
 
@@ -52,6 +55,18 @@ class App {
   private initializeRoutes(routes: Routes[]) {
     routes.forEach((route) => {
       this.app.use('/', route.router);
+    });
+  }
+
+  private connectToDataBase() {
+   
+    var connection = new Connection(dbConfig);
+    connection.on('connect', (err: any) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Connected DB');
+      }
     });
   }
 
